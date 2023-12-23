@@ -35,26 +35,26 @@ public class Philosopher extends Thread{
         }
     }
     private void think(){
-        synchronized (monitor){
+//        synchronized (monitor){
             if (isHungry) {
                 System.out.println(name + " is thinking. Don't disturb!");
-                monitor.notify();
-                try {
-                    monitor.wait();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }else {
-                monitor.notify();
+//                monitor.notify();
+//                try {
+//                    monitor.wait();
+//                } catch (InterruptedException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            }else {
+//                monitor.notify();
             }
-        }
+//        }
     }
     @Override
     public void run(){
         while (isHungry){
-            synchronized (monitor){
+//            synchronized (monitor){
                 this.havingMeal(1);
-            }
+//            }
             this.think();
         }
     }
