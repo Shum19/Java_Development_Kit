@@ -61,7 +61,7 @@ public class Game {
              }else {
                  System.out.println("You loose");
              }
-         }else {
+         }else if (secondChoice.equalsIgnoreCase("no")){
              System.out.println("Your DOOR " + (playerChoice+1) + " hasn't been changed");
              if (checkWin()){
                  System.out.println("You win");
@@ -69,6 +69,9 @@ public class Game {
              }else {
                  System.out.println("You loose");
              }
+         }else {
+             System.out.printf("You have mistyped %s\n", secondChoice);
+             secondPlayerChoice();
          }
      }
     private void doorChoice(){
@@ -85,18 +88,20 @@ public class Game {
          return false;
     }
     private void checkStatistic(){
+         char percent  = '%';
         double percentageOfChangeWin = FindPercent.findPercent(gameCount, changeCount);
         double percentageOfNoChangeWin = FindPercent.findPercent(gameCount, noChangeCount);
-        System.out.printf("Percent of wins without changing of door %s\n", percentageOfNoChangeWin);
-        System.out.printf("Percent of wins with changing of door %s\n", percentageOfChangeWin);
+        System.out.printf("Percent of wins without changing of door %s %s\n", percentageOfNoChangeWin, percent);
+        System.out.printf("Percent of wins with changing of door %s %s\n", percentageOfChangeWin, percent);
     }
     public void playGame(){
          boolean flag = true;
          while (flag){
-             System.out.println("------------------\n" +
+             System.out.print("------------------\n" +
                                 "1. Play Game.\n" +
                                 "2. Check Statistic\n" +
-                                "3. Exit Game");
+                                "3. Exit Game\n" +
+                                "Type your choice here -> ");
              Scanner input = new Scanner(System.in);
              String play = input.nextLine();
              switch (play){
@@ -110,6 +115,7 @@ public class Game {
                      System.out.println();
                      flag = false;
              }
+             System.out.println();
          }
     }
 
