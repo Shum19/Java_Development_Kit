@@ -53,7 +53,7 @@ public class Philosopher extends Thread{
     public void run(){
         while (isHungry){
 //            synchronized (monitor){
-                this.havingMeal(1);
+                this.havingMeal(3);
 //            }
             this.think();
         }
